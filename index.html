@@ -5,17 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vanguard Integrity Group | Private Access</title>
     <style>
-        /* ANIMACIÓN DE APARICIÓN - AJUSTADA A 3 SEGUNDOS */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
@@ -23,19 +18,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             background-color: #0a0a0a;
             font-family: 'Times New Roman', Times, serif;
-            overflow: hidden;
+            overflow: hidden; /* Bloquea cualquier movimiento lateral */
         }
 
-        /* FONDO GEOMÉTRICO OSCURO */
         .page-background {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
             background-image: 
                 linear-gradient(30deg, #121212 12%, transparent 12.5%, transparent 87%, #121212 87.5%, #121212),
@@ -44,114 +35,104 @@
             background-size: 50px 87px;
         }
 
-        /* TARJETA CON FONDO DE MÁRMOL Y MARCO ORO */
         .card {
             position: relative;
             text-align: center;
-            width: 520px;  
-            height: 200px; 
-            padding: 30px;
+            /* Usamos width ajustable pero con un máximo firme */
+            width: 90vw; 
+            max-width: 520px;
+            height: auto;
+            min-height: 200px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 1;
 
-            /* MÁRMOL BLANCO CON GRECAS (TU DISEÑO) */
             background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUh44c6888...'); 
             background-size: cover;
             background-position: center;
             
-            /* MARCO DELGADO ORO METÁLICO */
             border: 2px solid;
             border-image-source: linear-gradient(135deg, #8a6d3b 0%, #e1c16e 50%, #8a6d3b 100%);
             border-image-slice: 1;
             
             box-shadow: 0 30px 60px rgba(0,0,0,0.9);
-
-            /* APLICACIÓN DE LA ANIMACIÓN AL CONTENEDOR - 3 SEGUNDOS */
             animation: fadeInUp 3s ease-out forwards;
         }
 
-        /* TEXTO EN BLANCO */
         h1 {
             font-weight: 400;
-            letter-spacing: 5px; 
-            font-size: 1.2rem;
-            margin: 0;
             text-transform: uppercase;
             color: #ffffff;
-            white-space: nowrap;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+            margin: 0;
+            
+            /* LA CLAVE: El texto se encoge proporcionalmente al ancho de la pantalla */
+            /* No bajará de 0.8rem ni subirá de 1.2rem, ajustándose al 4% del ancho del cel */
+            font-size: clamp(0.8rem, 4.5vw, 1.2rem); 
+            letter-spacing: clamp(2px, 1vw, 5px);
+            white-space: nowrap; /* Mantiene una sola línea obligatoriamente */
         }
 
         .divider {
             height: 1px;
             width: 40px;
             background: linear-gradient(90deg, #8a6d3b, #f4e0a1, #8a6d3b); 
-            margin: 8px auto;
+            margin: 12px auto;
         }
 
         p {
             font-family: 'Helvetica Neue', Helvetica, sans-serif;
             font-weight: 400;
-            font-size: 0.65rem; 
             color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 0 0 15px 0;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            margin: 0 0 15px 0;
+
+            /* El subtexto también se encoge para no empujar la tarjeta */
+            font-size: clamp(0.45rem, 2.5vw, 0.65rem);
+            letter-spacing: clamp(1px, 0.5vw, 2px);
+            white-space: nowrap;
         }
 
         .btn-link {
             display: inline-block;
             font-family: 'Times New Roman', Times, serif;
-            font-size: 0.85rem;
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
             font-style: italic;
             color: #ffffff;
             text-decoration: none;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
             border-bottom: 1px solid #e1c16e;
             padding-bottom: 2px;
             margin-top: 10px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .btn-link:hover {
-            color: #e1c16e;
-            transform: translateY(-1px);
         }
 
         .footer {
             position: absolute;
             bottom: 10px;
+            width: 100%;
+            text-align: center;
             font-family: 'Helvetica Neue', Helvetica, sans-serif;
-            font-size: 0.5rem;
-            letter-spacing: 2px;
+            font-size: clamp(0.35rem, 2vw, 0.5rem);
+            letter-spacing: 1px;
             color: #999;
             text-transform: uppercase;
         }
-
     </style>
 </head>
 <body>
-
     <div class="page-background"></div>
-
     <div class="card">
         <h1>VANGUARD INTEGRITY GROUP</h1>
-        
         <div class="divider"></div>
-        
         <p>INTELIGENCIA ESTRATÉGICA & SOLUCIONES CORPORATIVAS</p>
-        
         <a href="https://wa.me/5656344937" class="btn-link">Solicitar Consulta Privada</a>
-        
         <div class="footer">
             CONFIDENTIALITY PROTOCOL ENABLED | © 2026 VIG
         </div>
     </div>
-
 </body>
 </html>
